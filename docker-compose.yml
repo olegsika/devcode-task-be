@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  golang-service:
+    build: ./app
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 81:3000
+    depends_on:
+      - db-service
+  db-service:
+    image: postgres:12
+    restart: always
+    volumes:
+      - ./static/pg:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: very-secret-password
+      POSTGRES_USER: olegsika
+      POSTGRES_DB: movie_service
+      PGDATA: /tmp
