@@ -2,7 +2,7 @@
 
 For setup project need to run command
 
-```deploy-run```
+```make deploy-run```
 
 Then need to run migrations
 
